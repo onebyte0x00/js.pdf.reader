@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumos - PDF Audio Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-book-reader"></i>
+                <h1>Lumos</h1>
+            </div>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        
+        <main class="app-main">
+            <div class="upload-section">
+                <div class="upload-box" id="upload-box">
+                    <input type="file" id="pdf-upload" accept=".pdf">
+                    <div class="upload-content">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>Upload PDF</h3>
+                        <p>Drag & drop your PDF here or click to browse</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <div class="player-controls">
+                    <button id="read-btn" class="control-btn primary" disabled>
+                        <i class="fas fa-play"></i>
+                        <span>Read</span>
+                    </button>
+                    <button id="pause-btn" class="control-btn" disabled>
+                        <i class="fas fa-pause"></i>
+                        <span>Pause</span>
+                    </button>
+                    <button id="stop-btn" class="control-btn" disabled>
+                        <i class="fas fa-stop"></i>
+                        <span>Stop</span>
+                    </button>
+                </div>
+                
+                <div class="settings-controls">
+                    <div class="setting-group">
+                        <label for="speed"><i class="fas fa-tachometer-alt"></i> Speed</label>
+                        <select id="speed">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.75">0.75x</option>
+                            <option selected value="1">1x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2x</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="voice"><i class="fas fa-user"></i> Voice</label>
+                        <select id="voice" disabled></select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="current-page">Page: 0/0</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+            
+            <div class="pdf-viewer">
+                <canvas id="pdf-render"></canvas>
+            </div>
+        </main>
+        
+        <footer class="app-footer">
+            <div class="status" id="status">
+                <i class="fas fa-info-circle"></i>
+                <span>Ready to upload PDF</span>
+            </div>
+            <div class="page-controls">
+                <button id="prev-page" class="page-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span id="page-display">1/1</span>
+                <button id="next-page" class="page-btn" disabled>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
